@@ -1,0 +1,19 @@
+CREATE DATABASE movies_db;
+
+USE movies_db;
+
+CREATE TABLE imdb_movies (
+    id INT PRIMARY KEY,
+    title VARCHAR(255),
+    genre VARCHAR(100),
+    director VARCHAR(100),
+    actors TEXT,
+    year INT,
+    runtime_minutes INT,
+    rating FLOAT,
+    votes INT,
+    revenue_millions FLOAT,
+    metascore INT
+);
+
+SELECT * FROM imdb_movies;
