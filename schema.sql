@@ -1,8 +1,8 @@
-CREATE DATABASE movies_db;
+CREATE DATABASE IF NOT EXISTS movies_db;
 
 USE movies_db;
 
-CREATE TABLE imdb_movies (
+CREATE TABLE IF NOT EXISTS imdb_movies (
     id INT PRIMARY KEY,
     title VARCHAR(255),
     genre VARCHAR(100),
@@ -15,5 +15,3 @@ CREATE TABLE imdb_movies (
     revenue_millions FLOAT,
     metascore INT
 );
-
-SELECT * FROM imdb_movies;

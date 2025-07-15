@@ -27,9 +27,18 @@ ORDER BY revenue_millions DESC
 limit 10;
 
 -- Top 10 movies by Votes
-SELECT title,votes FROM imdb_movies
+SELECT 
+    title, votes
+FROM
+    imdb_movies
 ORDER BY votes DESC
 LIMIT 10;
+
+-- Top directors by average movie rating
+SELECT director,AVG(rating) AS avg_rating_by_directors
+FROM imdb_movies
+GROUP BY director
+ORDER BY avg_rating_by_directors DESC;
 
 -- Movies with runtime over 150 minutes
 SELECT title,runtime_minutes FROM imdb_movies
@@ -46,3 +55,12 @@ SELECT
 FROM
     imdb_movies
 GROUP BY rating_category;
+
+-- Correlation between rating and revenue
+SELECT 
+    (AVG(rating * revenue_millions) - AVG(rating) * AVG(revenue_millions)) / 
+    (STDDEV(rating) * STDDEV(revenue_millions)) AS rating_revenue_correlation
+FROM 
+    imdb_movies
+WHERE 
+    revenue_millions IS NOT NULL AND rating IS NOT NULL;
